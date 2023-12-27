@@ -1,4 +1,7 @@
 /* Reset default margin and padding */
+body{
+  scroll-behavior: smooth;
+}
 body,
 h1 {
   margin: 0;
@@ -136,6 +139,7 @@ h1 {
   margin-left: auto;
   margin-right: auto;
   margin-top: 25px;
+  margin-bottom: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -157,7 +161,7 @@ h1 {
   padding: 20px;
 }
 
-.contact-form {}
+
 
 .contact-form-label {
   font-weight: bolder;
@@ -169,9 +173,9 @@ h1 {
   margin-top: 10px;
   margin-bottom: 10px;
   border-radius: 20px;
-  background-color:  rgb(255,241,240);
+  background-color: rgb(255, 241, 240);
   border-width: 1px;
-  border-color:rgb(255,241,240) ;
+  border-color: rgb(255, 241, 240);
   padding: 10px;
 }
 
@@ -180,12 +184,13 @@ h1 {
   margin-top: 10px;
   margin-bottom: 10px;
   border-radius: 20px;
-  background-color: rgb(255,241,240);
-  border-color:rgb(255,241,240) ;
+  background-color: rgb(255, 241, 240);
+  border-color: rgb(255, 241, 240);
   border-width: 1px;
   padding: 15px;
 }
-.button-contact{
+
+.button-contact {
   text-align: center;
   display: inline-block;
   padding-right: 30px;
