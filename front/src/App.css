@@ -1,42 +1,76 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+/* Reset default margin and padding */
+body,
+h1 {
+  margin: 0;
+  padding: 0;
+}
+
+/* Style the banner container */
+.banner {
+  margin-top: 25px;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Style the banner image */
+.banner img {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: brightness(50%);
+}
+
+/* Style the banner content */
+.banner-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   text-align: center;
+  color: black;
+  background-color: rgba(242, 243, 244, 0.9);
+  padding: 40px;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.banner-content h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Style the button */
+.button-large {
+  display: inline-block;
+  /*padding: 15px 25px;*/
+  padding-right: 50px;
+  padding-left: 50px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border-radius: 50px; /* Creates a round border */
+  background-color: #bb437e; /* Change the background color as needed */
+  color: white;
+  font-weight: bolder;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  font-size: x-large;
+  opacity: 1;
+  text-transform: uppercase;
+  border-color: #bb437e;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+.button-small {
+  display: inline-block;
+  /*padding: 15px 25px;*/
+  padding-right: 40px;
+  padding-left: 40px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 50px; /* Creates a round border */
+  background-color: #bb437e; /* Change the background color as needed */
+  color: white;
+  font-weight: bolder;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  font-size: x-large;
+  opacity: 1;
+  text-transform: uppercase;
 }
