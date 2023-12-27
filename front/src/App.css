@@ -1,42 +1,204 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+/* Reset default margin and padding */
+body,
+h1 {
+  margin: 0;
+  padding: 0;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+
+.banner {
+  margin-top: 25px;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.banner-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: brightness(50%);
+}
+
+
+.banner-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   text-align: center;
+  color: black;
+  background-color: rgba(242, 243, 244, 0.9);
+  padding: 40px;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.banner-content-h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.button-large {
+  display: inline-block;
+  padding-right: 50px;
+  padding-left: 50px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border-radius: 50px;
+  background-color: #bb437e;
+  color: white;
+  font-weight: bolder;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  font-size: x-large;
+  opacity: 1;
+  text-transform: uppercase;
+  border-color: #bb437e;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.courses {
+  margin-top: 25px;
+  padding: 5px;
+}
+
+.courses-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+}
+
+.courses-title {
+  font-weight: bolder;
+  font-size: 45px;
+  text-transform: capitalize;
+}
+
+.button-small {
+  text-align: center;
+  display: inline-block;
+  padding-right: 30px;
+  padding-left: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 50px;
+  background-color: #bb437e;
+  color: white;
+  font-weight: bolder;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  font-size: small;
+  opacity: 1;
+  text-transform: uppercase;
+}
+
+.courses-body {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1px;
 }
 
 .card {
-  padding: 2em;
+  width: 350px;
+  border: none;
+  padding: 25px;
+  background-color: #fff;
 }
 
-.read-the-docs {
-  color: #888;
+.card-image {
+  width: 350px;
+  height: 250px;
+}
+
+.card-content {
+  display: flex;
+  justify-content: baseline;
+  flex-direction: column;
+  align-items: center;
+  text-transform: capitalize;
+  gap: 1px;
+}
+
+.card-title {
+  font-weight: bold;
+  font-size: 25px;
+  text-align: center;
+}
+
+.card-price {
+  font-weight: bold;
+  color: #bb437e;
+  font-size: 20px;
+  text-align: center;
+}
+
+.contact {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f1b04c;
+  width: 70%;
+  border-radius: 40px;
+}
+
+.contact-title {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-size: 25px;
+  text-transform: capitalize;
+  font-weight: bolder;
+}
+
+.contact-content {
+  padding: 20px;
+}
+
+.contact-form {}
+
+.contact-form-label {
+  font-weight: bolder;
+  text-transform: uppercase;
+}
+
+.contact-form input {
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 20px;
+  background-color:  rgb(255,241,240);
+  border-width: 1px;
+  border-color:rgb(255,241,240) ;
+  padding: 10px;
+}
+
+.contact-form textarea {
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 20px;
+  background-color: rgb(255,241,240);
+  border-color:rgb(255,241,240) ;
+  border-width: 1px;
+  padding: 15px;
+}
+.button-contact{
+  text-align: center;
+  display: inline-block;
+  padding-right: 30px;
+  padding-left: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #bb437e;
+  border-color: #bb437e;
+  color: white;
+  font-weight: bolder;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  font-size: small;
+  opacity: 1;
+  margin-left: 80px;
 }
