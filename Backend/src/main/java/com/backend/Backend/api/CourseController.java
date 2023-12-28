@@ -13,19 +13,19 @@ import java.util.UUID;
 public class CourseController implements CourseService {
     @Autowired
     private CourseService courseService;
-    @PreAuthorize("hasAuthority('SCOPE_ADMIN')")
+    //@PreAuthorize("hasAuthority('SCOPE_ADMIN')")
     @PostMapping("/register_course")
     @Override
     public boolean registerCourse(@RequestBody Course course) {
         return courseService.registerCourse(course);
     }
-    @PreAuthorize("hasAuthority('SCOPE_ADMIN')")
+    //@PreAuthorize("hasAuthority('SCOPE_ADMIN')")
     @PutMapping("/edit_course/{id}")
     @Override
     public boolean editCourse(@PathVariable("id") UUID id, @RequestBody Course editedCourse) {
         return courseService.editCourse(id, editedCourse);
     }
-    @PreAuthorize("hasAuthority('SCOPE_ADMIN')")
+    //@PreAuthorize("hasAuthority('SCOPE_ADMIN')")
     @DeleteMapping("/delete_course/{id}")
     @Override
     public boolean deleteCourse(@PathVariable("id") UUID id) {
