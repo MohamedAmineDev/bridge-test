@@ -1,6 +1,7 @@
 package com.backend.Backend.services;
 
 import com.backend.Backend.entities.AppRole;
+import com.backend.Backend.interfaces.MyUserDetailsService;
 import com.backend.Backend.repositories.AppRoleRepo;
 import com.backend.Backend.repositories.AppUserRepo;
 import com.backend.Backend.entities.AppUser;

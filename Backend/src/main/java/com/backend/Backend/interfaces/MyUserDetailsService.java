@@ -1,4 +1,4 @@
-package com.backend.Backend.services;
+package com.backend.Backend.interfaces;
 
 import com.backend.Backend.entities.AppRole;
 import com.backend.Backend.entities.AppUser;
