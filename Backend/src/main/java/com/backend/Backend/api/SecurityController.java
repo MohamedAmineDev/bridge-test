@@ -1,6 +1,7 @@
 package com.backend.Backend.api;
 
 import com.backend.Backend.entities.AppUser;
+import com.backend.Backend.repositories.AppUserRepo;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.jose.jws.MacAlgorithm;
 import org.springframework.security.oauth2.jwt.JwsHeader;
 import org.springframework.security.oauth2.jwt.JwtClaimsSet;
@@ -32,24 +34,24 @@ public class SecurityController {
     private AuthenticationManager authenticationManager;
     @Autowired
     private JwtEncoder jwtEncoder;
+    @Autowired
+    private AppUserRepo userRepo;
 
     @PostMapping("/login")
     public Map<String, String> login(@RequestBody AppUser user) {
-        user.setId(UUID.randomUUID());
-        String email = user.getUsername();
+        String email = user.getEmail();
         String password = user.getPassword();
+
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(email, password));
         Instant actualTime = Instant.now();
         String scope = authentication.getAuthorities().stream().map(GrantedAuthority::getAuthority).collect(Collectors.joining(" "));
+        AppUser found = userRepo.findByEmail(email);
         JwtClaimsSet jwtClaimsSet = JwtClaimsSet.builder()
                 .issuedAt(actualTime)
                 .expiresAt(actualTime.plus(1, ChronoUnit.DAYS))
                 .subject(email)
                 .claim("scope", scope)
-                .claim("id", user.getId())
-                .claim("username", user.getUsername())
-                .claim("firstName", user.getFirstName())
-                .claim("lastName", user.getLastName())
+                .claim("username", found.getUsername())
                 .build();
         JwtEncoderParameters jwtEncoderParameters = JwtEncoderParameters.from(
                 JwsHeader.with(MacAlgorithm.HS256).build(), jwtClaimsSet

@@ -1,7 +1,10 @@
 package com.backend.Backend.configurations;
 
+import com.backend.Backend.services.MyUserDetailsService;
+import com.backend.Backend.services.MyUserDetailsServiceImplementation;
 import com.nimbusds.jose.jwk.source.ImmutableJWKSet;
 import com.nimbusds.jose.jwk.source.ImmutableSecret;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -25,6 +28,9 @@ import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
 import org.springframework.security.oauth2.jwt.NimbusJwtEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import javax.crypto.spec.SecretKeySpec;
 
@@ -32,16 +38,20 @@ import javax.crypto.spec.SecretKeySpec;
 @EnableWebSecurity
 @EnableMethodSecurity(prePostEnabled = false)
 public class SecurityConfiguration {
+    @Autowired
+    private MyUserDetailsServiceImplementation userDetailsService;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
     public static String secretKey = "57638792F423F4528482B4D6250655368566D597133743677397A2443264629";
 
-    @Bean
+    /*@Bean
     public InMemoryUserDetailsManager inMemoryUserDetailsManager() {
         PasswordEncoder passwordEncoder = passwordEncoder();
         return new InMemoryUserDetailsManager(
                 User.withUsername("user@gmail.com").password(passwordEncoder.encode("123456789")).authorities("USER").build(),
                 User.withUsername("admin@gmail.com").password(passwordEncoder.encode("123456789")).authorities("USER", "ADMIN").build()
         );
-    }
+    }*/
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
@@ -50,14 +60,11 @@ public class SecurityConfiguration {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(ar -> ar.requestMatchers(HttpMethod.POST, "/login").permitAll())
                 .authorizeHttpRequests(ar -> ar.anyRequest().authenticated())
+                .userDetailsService(userDetailsService)
                 .oauth2ResourceServer(oauth -> oauth.jwt(Customizer.withDefaults()))
                 .build();
     }
 
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
 
     @Bean
     public JwtEncoder jwtEncoder() {
@@ -71,10 +78,21 @@ public class SecurityConfiguration {
     }
 
     @Bean
-    public AuthenticationManager authenticationManager(UserDetailsService userDetailsService) {
+    public AuthenticationManager authenticationManager() {
         DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
-        daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
+        daoAuthenticationProvider.setPasswordEncoder(passwordEncoder);
         daoAuthenticationProvider.setUserDetailsService(userDetailsService);
         return new ProviderManager(daoAuthenticationProvider);
     }
+    @Bean
+    CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration corsConfiguration = new CorsConfiguration();
+        corsConfiguration.addAllowedOrigin("*");
+        corsConfiguration.addAllowedMethod("*");
+        corsConfiguration.addAllowedHeader("*");
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", corsConfiguration);
+        return source;
+    }
+
 }
