@@ -52,9 +52,10 @@ public class SecurityConfiguration {
         return httpSecurity
                 .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(ar -> ar.requestMatchers(HttpMethod.POST, "/login").permitAll())
-                .authorizeHttpRequests(ar -> ar.requestMatchers(HttpMethod.GET, "/fetch_courses").permitAll())
-                .authorizeHttpRequests(ar -> ar.anyRequest().authenticated())
+                .cors(cors->cors.configurationSource(corsConfigurationSource()))
+                //.authorizeHttpRequests(ar -> ar.requestMatchers(HttpMethod.POST, "/login").permitAll())
+                //.authorizeHttpRequests(ar -> ar.requestMatchers(HttpMethod.GET, "/fetch_courses").permitAll())
+                .authorizeHttpRequests(ar -> ar.anyRequest().permitAll())
                 .userDetailsService(userDetailsService)
                 .oauth2ResourceServer(oauth -> oauth.jwt(Customizer.withDefaults()))
                 .build();

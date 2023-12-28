@@ -207,3 +207,63 @@ h1 {
   opacity: 1;
   margin-left: 80px;
 }
+
+/** Login component style **/
+
+.login-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.bg-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: brightness(50%);
+}
+
+
+.login-container-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: black;
+  background-color: rgba(242, 243, 244, 0.9);
+  padding: 40px;
+}
+
+.login-forms {
+  display: flex;
+  flex-direction: column;
+  font-size: larger;
+  margin-bottom: 20px;
+  text-align: left;
+}
+.form-control input{
+  width: 100%;
+  padding: 5px;
+  border-radius: 20px;
+  border-width: 1px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.login-submit-button {
+  display: inline-block;
+  padding-right: 15px;
+  padding-left: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 20px;
+  background-color: #bb437e;
+  color: white;
+  font-weight: bolder;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  font-size: medium;
+  opacity: 1;
+  text-transform: uppercase;
+  border-color: #bb437e;
+}

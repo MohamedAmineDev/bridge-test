@@ -1,6 +1,7 @@
 import Item from "./Item";
 
 function Courses() {
+    const birdgeLink = 'https://9antra.tn/courses';
     const items = [
         { title: 'Spring boot / Angular', price: 350, image: 'https://i.ytimg.com/vi/uRkJINVgZWE/maxresdefault.jpg' },
         { title: 'Node js / React', price: 350, image: 'https://ichi.pro/assets/images/max/724/1*HjR1IqyGb4NpVOhPviYijQ.jpeg' },
@@ -14,7 +15,7 @@ function Courses() {
             <div className="courses">
                 <div className="courses-head">
                     <p className="courses-title">Discover our courses</p>
-                    <a className="button-small">View More</a>
+                    <a className="button-small" href={birdgeLink} target="_blank">View More</a>
                 </div>
                 <div className="courses-body">
                     {items.map((item) => {

@@ -1,13 +1,14 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
-//import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from './components/Header';
+import Courses from './components/Courses';
+import Contact from './components/Contact';
+import MyRouter from './components/MyRouter';
 function App() {
   return (
     <>
       <Header />
+      <Courses />
+      <Contact />
     </>
   );
 }

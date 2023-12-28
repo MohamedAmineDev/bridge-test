@@ -9,8 +9,6 @@ function Header() {
       <img src={logo} alt="Logo" name='logo' />
     </div>
     <Card />
-    <Courses />
-    <Contact />
   </>);
 }
 export default Header;
