@@ -52,6 +52,7 @@ public class SecurityConfiguration {
         return httpSecurity
                 .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .csrf(AbstractHttpConfigurer::disable)
+                .cors(cors->cors.configurationSource(corsConfigurationSource()))
                 .authorizeHttpRequests(ar -> ar.requestMatchers(HttpMethod.POST, "/login").permitAll())
                 .authorizeHttpRequests(ar -> ar.requestMatchers(HttpMethod.GET, "/fetch_courses").permitAll())
                 .authorizeHttpRequests(ar -> ar.anyRequest().authenticated())
