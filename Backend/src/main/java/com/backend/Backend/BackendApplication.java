@@ -24,8 +24,8 @@ public class BackendApplication {
         return args -> {
             var roles = roleRepo.findAll();
             if (roles.isEmpty()) {
-                userDetailsServiceImplementation.registerRole("ROLE_ADMIN");
-                userDetailsServiceImplementation.registerRole("ROLE_USER");
+                var res1 = userDetailsServiceImplementation.registerRole("ROLE_ADMIN");
+                var res2 = userDetailsServiceImplementation.registerRole("ROLE_USER");
             }
             var users = userRepo.findAll();
             if (users.isEmpty()) {
@@ -34,7 +34,7 @@ public class BackendApplication {
                 user.setPassword("123456789");
                 user.setUsername("Admin2023");
                 user.setRoles(roleRepo.findAll());
-                userDetailsServiceImplementation.registerUser(user);
+                var res3 = userDetailsServiceImplementation.registerUser(user);
             }
         };
     }
